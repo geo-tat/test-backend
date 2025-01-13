@@ -33,7 +33,11 @@ object BudgetService {
 
             val data = BudgetEntity.wrapRows(query).map { it.toListResponse() }
 
-            val paginatedData = data
+            val filteredData = param.authorName?.let { authorName ->
+                data.filter { it.authorName?.contains(authorName, ignoreCase = true) == true }
+            } ?: data
+
+            val paginatedData = filteredData
                 .drop(param.offset)
                 .take(param.limit)
 
