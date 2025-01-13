@@ -41,7 +41,7 @@ class BudgetEntity(id: EntityID<Int>) : IntEntity(id) {
             amount = this.amount,
             type = this.type,
             authorName = this.author?.fullName,
-            authorCreatedAt = this.author?.createdAt?.toString()
+            createdAt = this.author?.createdAt?.toString()
         )
     }
 }
